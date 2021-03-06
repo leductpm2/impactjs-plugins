@@ -484,8 +484,8 @@ ig.module(
 	'impact.native-extension.number',
 	'impact.native-extension.array',
 	'impact.native-extension.function',
-
-	'impact.utils.canvas-draw',
+	
+	'impact.utils.utils',
 	'impact.utils.input',
 	'impact.utils.sound'
 ).defines(function () {

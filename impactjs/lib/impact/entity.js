@@ -73,7 +73,7 @@ ig.module(
 	// Entity Types - used for checks
 	ig.Entity.TYPE = {
 		NONE: 0,
-		A: 1,
+		BUTTON: 1,
 		B: 2,
 		BOTH: 3
 	};
