@@ -194,6 +194,14 @@ ig.module(
             );
 
             ctx.restore();
+        },
+        scale: function (context, scaleX, scaleY, x, y, w, h) {
+            var scale = ig.system.scale;
+            var originX = x + (w / 2);
+            var originY = y + (h / 2);
+            context.translate(originX * scale, originY * scale);
+            context.scale(scaleX, scaleY);
+            context.translate(-originX * scale, -originY * scale);
         }
     };
 });

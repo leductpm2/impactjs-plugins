@@ -4,8 +4,9 @@ ig.module(
     window.log = window.console["log"].bind(window.console, "[Quick-Log]");
     VALID_LOGGER = [
         "Button",
+        "Spawn"
     ];
-    LOGGER_STYLE = {
+    LOGGER_STYLE = {        
         "Button": "background: #222; color: #bada55",
     }
     window.logger = function () {

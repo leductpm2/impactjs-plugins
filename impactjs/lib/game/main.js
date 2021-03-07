@@ -2,20 +2,36 @@ ig.module(
 	'game.main'
 ).requires(
 	'impact.game',
-	'game.settings',
-	'impact.utils.font',
+	'impact.layer-entities',
 	'plugins.lightning',
+	'entities.button',
 	'entities.pointer',
-	'entities.extend.button'
+	'plugins.anchor-position'
 ).defines(function () {
 	MyGame = ig.Game.extend({
-		// Load a font
-		font: new ig.Font('media/fonts/04b03.font.png'),
 		init: function () {
-			// Initialize your game here; bind keys etc.
-			this.spawnEntity(ExtendButton, 0, 0);
-			this.spawnEntity(EntityPointer, 0, 0);
+			// this.spawnEntity(EntityButton, 0, 0);
+			// this.spawnEntity(EntityPointer, 0, 0);
+			this.background = this.spawnLayer(ig.Layer, 0, 0, {
+				layerName: "background",
+				anchorType: "middle",
+				selfAnchorType: "middle",
+				size: { x: ig.system.width, y: ig.system.height }
+			});
+			this.ui = this.spawnLayer(ig.LayerEntities, 0, 0, {
+				layerName: "ui",
+				layerBackgroundColor: "rgba(255,255,255,0.5)",
+				anchorType: "middle",
+				selfAnchorType: "middle",
+				size: { x: ig.system.width * 0.5, y: ig.system.height * 0.5 }
+			});
 			this.lightning = new Lightning();
+			var button = this.ui.spawnEntity(EntityButton, 0, 0, {
+				anchorOnObject: this.ui,
+				anchorType: "middle",
+				selfAnchorType: "middle"
+			});			
+			this.ui.spawnEntity(EntityPointer, 0, 0);
 		},
 
 		update: function () {
@@ -29,12 +45,6 @@ ig.module(
 			// Draw all entities and backgroundMaps
 			this.parent();
 
-
-			// Add your own drawing code here
-			var x = ig.system.width / 2,
-				y = ig.system.height / 2;
-
-			this.font.draw('It Works!', x, y, ig.Font.ALIGN.CENTER);
 
 			this.lightning.Cast(ig.system.context, new VectorLightning(0, 0, ig.system.width * 0.25, ig.system.height * 0.5), new VectorLightning(0, 0, ig.system.width * 0.75, ig.system.height * 0.5))
 

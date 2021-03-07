@@ -478,7 +478,7 @@ ig.module(
 	'impact.impact'
 ).requires(	
 	'dom.ready',
-	'impact.impact-config',
+	'impact.settings',
 	'impact.loader',	
 	'impact.system',
 	'impact.native-extension.number',

@@ -1,14 +1,21 @@
 ig.module(
-    'impact.impact-config'
+    'impact.settings'
 ).defines(function () {
-    ig.config = {        
-        clearColor: '#000000',
+    ig.settings = {
+        CLEAR_COLOR: '#000000',
+        CELL_SIZE: 64,
+        GAME_RESOLUTION: {
+            WIDTH: 960,
+            HEIGHT: 720
+        },
+        GAME_FPS: 60,
+        GAME_SCALE_FACTOR: 1,
 
         /**
          * 
          * @returns Config
          */
-        get:function () {
+        get: function () {
             var currentObject = this;
             var settingString = "";
             for (var i = 0; i < arguments.length; i++) {
@@ -21,5 +28,5 @@ ig.module(
             }
             return currentObject;
         },
-    };    
+    };
 });

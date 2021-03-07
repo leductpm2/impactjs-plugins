@@ -28,7 +28,7 @@ ig.module(
 			}
 		},
 		load: function () {
-			ig.system.clear(ig.config.get("clearColor"));
+			ig.system.clear(ig.settings.get("CLEAR_COLOR"));
 
 			if (!this.resources.length) {
 				this.end();

@@ -13,6 +13,13 @@ ig.module(
                 throw functionName + " is not a function";
             }
         },
+        checkObject: function (newValue, defaultValue) {
+            if (typeof newValue === "undefined") {
+                return defaultValue;
+            } else {
+                return newValue;
+            }
+        },
     };
 });
 
