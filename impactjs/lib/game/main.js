@@ -2,6 +2,7 @@ ig.module(
 	'game.main'
 ).requires(
 	'impact.game',
+	'plugins.handlers.handler',
 	'impact.layer-entities',
 	'plugins.lightning',
 	'entities.button',
@@ -51,6 +52,7 @@ ig.module(
 		}
 	});
 
+	ig.initHandlers();
 	// Start the Game with 60fps, a resolution of 320x240, scaled
 	// up by a factor of 2
 	var gameResolution = ig.settings.get("GAME_RESOLUTION");
