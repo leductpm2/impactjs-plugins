@@ -8,7 +8,7 @@ ig.module(
     AnchorPosition = {
         // System anchor
         systemStartAt: { x: 0, y: 0 },
-        toAnchorPosition: function (anchorOnObject, anchorType) {           
+        toAnchorPosition: function (anchorOnObject, anchorType) {
             var newPosition = {
                 x: this.systemStartAt.x,
                 y: this.systemStartAt.y
@@ -59,7 +59,7 @@ ig.module(
                 } break;
                 case "bottom-center": case "center-bottom": case "bottom": {
                     newPosition.x = x + width * 0.5;
-                    newPosition.y = y + height * 0.5;
+                    newPosition.y = y + height;
                 } break;
                 case "bottom-right": case "right-bottom": {
                     newPosition.x = x + width;
@@ -109,7 +109,7 @@ ig.module(
                 } break;
                 case "bottom-center": case "center-bottom": case "bottom": {
                     newPosition.x = x - width * 0.5;
-                    newPosition.y = y - height * 0.5;
+                    newPosition.y = y - height;
                 } break;
                 case "bottom-right": case "right-bottom": {
                     newPosition.x = x - width;
@@ -124,11 +124,32 @@ ig.module(
         anchorType: null,
         anchorOnObject: null,
         selfAnchorType: null,
-        update: function () {
+        updateAnchors: function () {
             this.pos = this.toAnchorPosition(this.anchorOnObject, this.anchorType);
             this.pos = this.toSelfAnchorPosition(this.pos.x, this.pos.y, this.selfAnchorType);
+            this.updateAnchorOffsetPercent();
+            this.updateAnchorOffset();
+        },
+        anchorOffset: { x: 0, y: 0 },
+        updateAnchorOffset: function () {
+            this.pos.x = this.pos.x + this.anchorOffset.x;
+            this.pos.y = this.pos.y + this.anchorOffset.y;
+        },
+        anchorOffsetPercent: { x: 0, y: 0 },
+        updateAnchorOffsetPercent: function () {
+            if (this.anchorOnObject) {
+                this.pos.x = this.pos.x + this.anchorOffsetPercent.x * this.anchorOnObject.size.x;
+                this.pos.y = this.pos.y + this.anchorOffsetPercent.y * this.anchorOnObject.size.y;
+            }
+        },
+        update: function () {
+            this.updateAnchors();
             this.parent();
-        }
+        },
+        init: function (x, y, settings) {
+            this.parent(x, y, settings);
+            this.updateAnchors();
+        },
     };
     ig.Layer.inject(AnchorPosition);
     ig.Entity.inject(AnchorPosition);

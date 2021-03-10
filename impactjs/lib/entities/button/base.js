@@ -22,13 +22,13 @@ ig.module(
             if (this.pointerOverFlag) return;
             this.pointerOverFlag = true;
 
-            ig.utils.callFunction("onPointerOver", this);
+            ig.utils.callFunction("onPointerOver", this, true);
         },
         pointerLeave: function () {
             if (!this.pointerOverFlag) return;
             this.pointerOverFlag = false;
 
-            ig.utils.callFunction("onPointerLeave", this);
+            ig.utils.callFunction("onPointerLeave", this, true);
 
             // If pointer leaver before release
             if (this.firstClickedFlag) {
@@ -41,17 +41,17 @@ ig.module(
 
             this.firstClickedFlag = true;
 
-            ig.utils.callFunction("onPointerFirstClick", this);
+            ig.utils.callFunction("onPointerFirstClick", this, true);
         },
         pointerClicking: function () {
             if (!this.firstClickedFlag) return;
 
-            ig.utils.callFunction("onPointerClicking", this);
+            ig.utils.callFunction("onPointerClicking", this, true);
         },
         pointerRelease: function () {
             if (!this.firstClickedFlag) return;
             this.firstClickedFlag = false;
-            ig.utils.callFunction("onPointerRelease", this);
+            ig.utils.callFunction("onPointerRelease", this, true);
         },
         canFunction: function () {
             return this.buttonEnable;

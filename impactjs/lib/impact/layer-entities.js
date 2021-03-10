@@ -10,7 +10,7 @@ ig.module(
 		namedEntities: {},
 
 		_deferredKill: [],
-		_doSortEntities: false,
+		_doSortEntities: false,	
 		staticInstantiate: function () {
 			return null;
 		},
@@ -62,8 +62,9 @@ ig.module(
 			ent.checkAgainst = ig.Entity.TYPE.NONE;
 			this._deferredKill.push(ent);
 		},
-		update: function () {
+		update: function () {			
 			this.parent();
+
 			this.updateEntities();
 			this.checkEntities();
 
@@ -131,7 +132,7 @@ ig.module(
 				} // end for x size
 			} // end for entities
 		},
-		draw: function () {
+		draw: function () {			
 			this.parent();
 			for (var i = 0; i < this.entities.length; i++) {
 				this.entities[i].draw();
@@ -143,6 +144,6 @@ ig.module(
 				this.entities.erase(this._deferredKill[i]);
 			}
 			this._deferredKill = [];
-		}
+		},		
 	});
 });

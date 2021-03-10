@@ -53,11 +53,26 @@ ig.module(
 			// update layers
 			this.updateLayers();
 			this.removeLayers();
+			this.updatePointer();
+		},
+		/**
+		 * Set enable value to pointerCheckFlag for layer under
+		 * @param {*} topLayer 
+		 * @param {*} enable 
+		 */
+		enablePointerCheckFlagForLayerUnder: function (topLayer, enable) {
+			for (var i = 0; i < this.layers.length; i++) {
+				var layer = this.layers[i];
+				if (layer.id == topLayer.id) continue;
+				if (layer.layerIndex < topLayer.layerIndex) {
+					layer.setPointerCheckFlag(enable);
+				}
+			}
 		},
 		updateLayers: function () {
 			for (var i = 0; i < this.layers.length; i++) {
 				var layer = this.layers[i];
-				layer.update();
+				if (layer._layerUpdateFlag) layer.update();
 			}
 		},
 		removeLayers: function () {
@@ -70,8 +85,27 @@ ig.module(
 		draw: function () {
 			ig.system.clear(ig.settings.get("CLEAR_COLOR"));
 			for (var i = 0; i < this.layers.length; i++) {
-				this.layers[i].draw();
+				var layer = this.layers[i];
+				if (layer._layerDrawFlag) layer.draw();
 			}
+		},
+		spawnPointer: function (settings) {
+			this.pointer = new EntityPointer(-999, -999, settings);
+		},
+		updatePointer: function () {
+			for (var i = 0; i < this.layers.length; i++) {
+				var layer = this.layers[i];				
+				if (!layer.entities) continue;
+				if (!layer._layerUpdateFlag) continue;
+				if (!layer._layerDrawFlag) continue;
+				if (!layer._pointerCheckFlag) continue;
+				for (var j = 0; j < layer.entities.length; j++) {
+					var entity = layer.entities[j];
+					if (!entity) continue;
+					if (entity.touches(this.pointer)) this.pointer.check(entity);
+				}
+			}
+			this.pointer.update();
 		},
 	});
 });

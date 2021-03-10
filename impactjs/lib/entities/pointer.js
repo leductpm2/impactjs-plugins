@@ -43,26 +43,26 @@ ig.module(
         updatePosition: function () {
             this.pos.x = ig.input.mouse.x;
             this.pos.y = ig.input.mouse.y;
-        },
+        },        
         check: function (other) {
-            // push all entity that the pointer over
+            // push all entity the over to handle later
             this.objectArray.push(other);
         },
         handlePointerEventLastFrame: function () {
             for (var i = 0; i < this.objectArrayLastFrame.length; i++) {
                 var object = this.objectArrayLastFrame[i];
                 if (!this.objectArray.includes(object)) {
-                    ig.utils.callFunction("pointerLeave", object);
+                    ig.utils.callFunction("pointerLeave", object, true);
                 }
             }
             // Clear after handled
             this.objectArrayLastFrame = [];
         },
         handlePointerEvent: function () {
-            //iterate from hightest entity to lowest
+            //iterate from hightest entity to lowest           
             for (var i = this.objectArray.length - 1; i >= 0; i--) {
                 var object = this.objectArray[i];
-                ig.utils.callFunction("pointerOver", object);
+                ig.utils.callFunction("pointerOver", object, true);
                 this.clickObject(object);
                 this.objectArrayLastFrame.push(object);
             }

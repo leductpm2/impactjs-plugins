@@ -3,7 +3,7 @@ ig.module(
 ).defines(function () {
     window.log = window.console["log"].bind(window.console, "[Quick-Log]");
     VALID_LOGGER = [
-        "Button",
+        // "Button",
         "Spawn"
     ];
     LOGGER_STYLE = {        

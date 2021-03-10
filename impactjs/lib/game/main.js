@@ -2,59 +2,50 @@ ig.module(
 	'game.main'
 ).requires(
 	'impact.game',
+	'configs.configs',
+
 	'plugins.handlers.handler',
 	'impact.layer-entities',
 	'plugins.lightning',
 	'entities.button',
 	'entities.pointer',
-	'plugins.anchor-position'
+	'plugins.anchor-position',
+
+	'game.layers.home',
+	'game.layers.settings'
 ).defines(function () {
 	MyGame = ig.Game.extend({
 		init: function () {
-			// this.spawnEntity(EntityButton, 0, 0);
-			// this.spawnEntity(EntityPointer, 0, 0);
-			this.background = this.spawnLayer(ig.Layer, 0, 0, {
-				layerName: "background",
+			this.spawnPointer();
+			this.layerHome = this.spawnLayer(LayerHome, 0, 0, {
+				layerIndex: 1,
+				layerName: "home",
 				anchorType: "middle",
 				selfAnchorType: "middle",
 				size: { x: ig.system.width, y: ig.system.height }
 			});
-			this.ui = this.spawnLayer(ig.LayerEntities, 0, 0, {
-				layerName: "ui",
-				layerBackgroundColor: "rgba(255,255,255,0.5)",
+			this.layerSettings = this.spawnLayer(LayerSettings, 0, 0, {
+				layerIndex: 2,
+				layerName: "settings",
 				anchorType: "middle",
 				selfAnchorType: "middle",
-				size: { x: ig.system.width * 0.5, y: ig.system.height * 0.5 }
+				size: { x: ig.system.height * 0.5, y: ig.system.height * 0.75 }
 			});
-			this.lightning = new Lightning();
-			var button = this.ui.spawnEntity(EntityButton, 0, 0, {
-				anchorOnObject: this.ui,
-				anchorType: "middle",
-				selfAnchorType: "middle"
-			});			
-			this.ui.spawnEntity(EntityPointer, 0, 0);
-		},
 
+			this.layerSettings.layerHide();
+		},
 		update: function () {
-			// Update all entities and backgroundMaps
+			// Update all layers
 			this.parent();
-
-			// Add your own, additional update code here
 		},
-
 		draw: function () {
-			// Draw all entities and backgroundMaps
+			// Draw all layers
 			this.parent();
-
-
-			this.lightning.Cast(ig.system.context, new VectorLightning(0, 0, ig.system.width * 0.25, ig.system.height * 0.5), new VectorLightning(0, 0, ig.system.width * 0.75, ig.system.height * 0.5))
-
 		}
 	});
 
 	ig.initHandlers();
-	// Start the Game with 60fps, a resolution of 320x240, scaled
-	// up by a factor of 2
+
 	var gameResolution = ig.settings.get("GAME_RESOLUTION");
 	ig.main('#canvas', MyGame, ig.settings.get("GAME_FPS"), gameResolution.WIDTH, gameResolution.HEIGHT, ig.settings.get("GAME_SCALE_FACTOR"));
 });
