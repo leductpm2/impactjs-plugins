@@ -1,7 +1,7 @@
 ig.module(
-    'entities.pointer'
+    'impact.entity.extends.pointer'
 ).requires(
-    'impact.entity',
+    'impact.entity.entity',
     'impact.utils.input'
 ).defines(function () {
     EntityPointer = ig.Entity.extend({

@@ -1,8 +1,8 @@
 ig.module(
-	'impact.game'
+	'impact.game.entities-control'
 ).requires(
 	'impact.impact',
-	'impact.layer'
+	'impact.entity.entity'
 ).defines(function () {
 	"use strict";
 
@@ -94,7 +94,7 @@ ig.module(
 		},
 		updatePointer: function () {
 			for (var i = 0; i < this.layers.length; i++) {
-				var layer = this.layers[i];				
+				var layer = this.layers[i];
 				if (!layer.entities) continue;
 				if (!layer._layerUpdateFlag) continue;
 				if (!layer._layerDrawFlag) continue;

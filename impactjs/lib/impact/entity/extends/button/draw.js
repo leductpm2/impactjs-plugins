@@ -1,7 +1,7 @@
 ig.module(
-    'entities.button.draw'
+    'impact.entity.extends.button.draw'
 ).requires(
-    'entities.button.base'
+    'impact.entity.extends.button.base'
 ).defines(function () {
     EntityButtonBase.inject({
         buttonText: "Button",

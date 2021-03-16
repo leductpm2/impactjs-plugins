@@ -1,20 +1,18 @@
 ig.module(
-	'impact.entity-pool'
+	'impact.entity.entity-pool'
 ).defines(function () {
 	"use strict";
 
 	ig.EntityPool = {
-		pools: {},		
+		pools: {},
 		mixin: {
 			staticInstantiate: function (x, y, settings) {
 				return ig.EntityPool.getFromPool(this.classId, x, y, settings);
 			},
-
 			erase: function () {
 				ig.EntityPool.putInPool(this);
 			}
 		},
-		
 		enableFor: function (Class) {
 			Class.inject(this.mixin);
 		},

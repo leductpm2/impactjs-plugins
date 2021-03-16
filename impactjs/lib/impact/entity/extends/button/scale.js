@@ -1,7 +1,7 @@
 ig.module(
-    'entities.button.scale'
+    'impact.entity.extends.button.scale'
 ).requires(
-    'entities.button.base'
+    'impact.entity.extends.button.base'
 ).defines(function () {
     EntityButtonBase.inject({
         buttonScale: { x: 1, y: 1 },

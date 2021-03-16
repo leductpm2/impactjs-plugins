@@ -1,9 +1,7 @@
 ig.module(
     'game.layers.settings'
 ).requires(
-    'impact.layer-entities',
-    'entities.button',
-    'entities.pointer'
+    'impact.game.layer.layer-entities'
 ).defines(function () {
     LayerSettings = ig.LayerEntities.extend({
         title: "",

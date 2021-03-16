@@ -1,9 +1,7 @@
 ig.module(
     'game.layers.home'
 ).requires(
-    'impact.layer-entities',
-    'entities.button',
-    'entities.pointer'
+    'impact.game.layer.layer-entities'
 ).defines(function () {
     LayerHome = ig.LayerEntities.extend({
         init: function (x, y, settings) {

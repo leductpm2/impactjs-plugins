@@ -2,8 +2,8 @@ ig.module(
     'plugins.anchor-position'
 ).requires(
     'impact.system',
-    'impact.layer',
-    'impact.entity'
+    'impact.game.layer.layer',
+    'impact.entity.entity'
 ).defines(function () {
     AnchorPosition = {
         // System anchor

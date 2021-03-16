@@ -1,5 +1,5 @@
 ig.module(
-	'impact.entity'
+	'impact.entity.entity'
 ).defines(function () {
 	"use strict";
 
@@ -7,8 +7,8 @@ ig.module(
 		id: 0,
 		settings: {},
 		zIndex: 0,
-		size: { x: 16, y: 16 },
 
+		size: { x: 16, y: 16 },
 		pos: { x: 0, y: 0 },
 		lastPos: { x: 0, y: 0 },
 
@@ -47,7 +47,7 @@ ig.module(
 			this.lastPos.x = this.pos.x;
 			this.lastPos.y = this.pos.y;
 		},
-		draw: function () {		
+		draw: function () {
 		},
 		kill: function () {
 			ig.game.removeEntity(this);
@@ -61,7 +61,6 @@ ig.module(
 			);
 		},
 		check: function (other) { },
-		ready: function () { },
 		erase: function () { }
 	});
 

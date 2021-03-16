@@ -1,5 +1,5 @@
 (function (window) {
-	"use strict";	
+	"use strict";
 	// -----------------------------------------------------------------------------
 	// ig Namespace
 	window.ig = {
@@ -184,7 +184,7 @@
 			ig.nocache = set
 				? '?' + Date.now()
 				: '';
-		},	
+		},
 
 
 		_loadScript: function (name, requiredFrom) {
@@ -476,15 +476,15 @@
 // creates a preloader and starts the run loop
 ig.module(
 	'impact.impact'
-).requires(	
+).requires(
 	'dom.ready',
 	'impact.settings',
-	'impact.loader',	
+	'impact.loader',
 	'impact.system',
 	'impact.native-extension.number',
 	'impact.native-extension.array',
 	'impact.native-extension.function',
-	
+
 	'impact.utils.utils',
 	'impact.utils.input',
 	'impact.utils.sound'

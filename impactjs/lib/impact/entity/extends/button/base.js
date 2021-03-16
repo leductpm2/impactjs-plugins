@@ -1,7 +1,7 @@
 ig.module(
-    'entities.button.base'
+    'impact.entity.extends.button.base'
 ).requires(
-    'impact.entity'
+    'impact.entity.entity'
 ).defines(function () {
     EntityButtonBase = ig.Entity.extend({
         type: ig.Entity.TYPE.BUTTON,

@@ -1,7 +1,8 @@
 ig.module(
-	'impact.layer-entities'
+	'impact.game.layer.layer-entities'
 ).requires(
-	'impact.layer'
+	'impact.game.layer.layer',
+	'impact.entity.entity'
 ).defines(function () {
 	"use strict";
 

@@ -1,5 +1,5 @@
 ig.module(
-	'impact.layer'
+	'impact.game.layer.layer'
 ).defines(function () {
 	"use strict";
 

@@ -1,9 +1,9 @@
 ig.module(
-    'entities.button'
+    'impact.entity.extends.button'
 ).requires(
-    'entities.button.base',
-    'entities.button.draw',
-    'entities.button.scale'
+    'impact.entity.extends.button.base',
+    'impact.entity.extends.button.draw',
+    'impact.entity.extends.button.scale'
 ).defines(function () {
     EntityButton = EntityButtonBase.extend({
         type: ig.Entity.TYPE.BUTTON,
